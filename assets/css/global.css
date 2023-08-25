@@ -29,6 +29,61 @@ body {
 	letter-spacing: 10px;
 }
 
+.details-container {
+	position: absolute;
+	width: 100%;
+	padding: 2% 15%;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+
+.details-header {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 1rem;
+	justify-content: center;
+	align-items: center;
+}
+.pokemon-name {
+	font-size: 2rem;
+	text-transform: capitalize;
+}
+.close-btn-div {
+	display: flex;
+	justify-content: end;
+}
+.close-btn {
+	font-size: 2rem;
+	cursor: pointer;
+}
+.details-img-container {
+	width: 100%;
+	display: flex;
+	place-content: center;
+}
+.details-img {
+	background-image: url('../img/pokeball-bg-2.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center center;
+	border-radius: 50%;
+	width: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.details-img img {
+	width: 300px;
+	height: 300px;
+}
+.details-menu {
+	background-color: #fff;
+	width: 100%;
+	place-self: center;
+}
+
 @media screen and (min-width: 992px) {
 	.content {
 		max-width: 992px;
