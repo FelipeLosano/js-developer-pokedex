@@ -34,71 +34,48 @@ function convertPokemonToLi(pokemon) {
 function convertPokemonToModal(pokemon) {
 	return ` 
 	<div class="details-container ${pokemon.type}-color">
-		<div class="details-header">
-				<h2 class="pokemon-name">${pokemon.name} #${pokemon.number}</h2>
-				<div class="close-btn-div">
-				<span class="close-btn" onclick="closeModal()">X</span>
-				</div>
-				<div class="detail"> 
-					<ol class="types">
-							${pokemon.types
-								.map((type) => `<li class="type ${type}-color">${type}</li>`)
-								.join('')}
-					</ol>
-				</div>
-		</div>
+  <div class="details-header">
+    <h2 class="pokemon-name">${pokemon.name} #${pokemon.number}</h2>
+    <div class="close-btn-div">
+      <span class="close-btn" onclick="closeModal()">X</span>
+    </div>
+    <div class="detail">
+      <ol class="types">
+        ${pokemon.types
+					.map((type) => `<li class="type ${type}-color">${type}</li>`)
+					.join('')}
+      </ol>
+    </div>
+  </div>
 
-		<div class="details-img-container">
-			<div class="details-img">
-				<img src="${pokemon.photo}" alt="${pokemon.name}">
-			</div>
-		</div>
+  <div class="details-body">
+    <div class="details-img-container">
+      <div class="details-img">
+        <img src="${pokemon.photo}" alt="${pokemon.name}">
+      </div>
+    </div>
 
-		<div class="details-menu">
 
-				<ul>
-						<li>Sobre</li>
-						<li>Status Base</li>
-						<li>Cadeia de evoluções</li>
-						<li>Golpes</li>
-				</ul>
+    <div class="details-card">
+      <div class="details-menu">
+        <ul>
+          <li>Sobre</li>
+          <li>Status Base</li>
+          <li>Cadeia de evoluções</li>
+          <li>Golpes</li>
+        </ul>
+      </div>
 
-				<section class="about">
-						<div>Experiência base</div>
-						<div>Altura</div>
-						<div>Peso</div>
-						<div>Habilidades</div>
-						<div>Egg Groups</div>
-						<div>Geração</div>
-
-						<h3>Descrição</h3>
-						<p></p>
-				</section>
-
-				<section class="base-stats">
-						<div>Vida</div>
-						<div>Ataque</div>
-						<div>Defesa</div>
-						<div>Sp. Atk.</div>
-						<div>Sp. Def.</div>
-						<div>Speed</div>
-				</section>
-
-				<section class="evolutions">
-						<div>Atual</div>
-						<div>Pré-evolução</div>
-						<div>Evolução</div>
-				</section>
-
-				<section class="moves">
-						<ul>
-								<li>golpes 1</li>
-								<li>golpes 2</li>
-								<li>golpes 3</li>
-						</ul>
-				</section>
-
-		</div>
+      <div class="details-content">
+        <section class="about">
+          <div>Experiência base ${pokemon.baseExp}</div>
+          <div>Altura ${pokemon.height} decimetres</div>
+          <div>Peso ${pokemon.weight} hectograms</div>
+          <div>Habilidades ${pokemon.abilities}</div>
+        </section>
+      </div>
+    </div>
+  </div>
 </div>`;
 }
 
@@ -130,11 +107,11 @@ function openModal(pokemonId) {
 		modal.innerHTML += newHtml;
 	});
 	pokedex.style.display = 'none';
-	modal.style.display = 'block';
+	modal.style.display = 'flex';
 }
 
 function closeModal() {
-	pokedex.style.display = 'grid';
+	pokedex.style.display = 'flex';
 	modal.style.display = 'none';
 	modal.innerHTML = '';
 }
