@@ -58,20 +58,32 @@ function convertPokemonToModal(pokemon) {
 
     <div class="details-card">
       <div class="details-menu">
-        <ul>
-          <li>Sobre</li>
-          <li>Status Base</li>
-          <li>Cadeia de evoluções</li>
-          <li>Golpes</li>
-        </ul>
+      <ul>
+        <li onclick="changeDetailCall('about', ${pokemon.number})">Sobre</li>
+        <li onclick="changeDetailCall('baseStatus', ${
+					pokemon.number
+				})">Status Base</li>
+        <li onclick="changeDetailCall('evolutions', ${
+					pokemon.number
+				})">Cadeia de evoluções</li>
+        <li onclick="changeDetailCall('moves', ${pokemon.number})">Golpes</li>
+    </ul>
       </div>
 
       <div class="details-content">
         <section class="about">
-          <div>Experiência base ${pokemon.baseExp}</div>
-          <div>Altura ${pokemon.height} decimetres</div>
-          <div>Peso ${pokemon.weight} hectograms</div>
-          <div>Habilidades ${pokemon.abilities}</div>
+          <div>
+            <p>Experiência Base: <span>${pokemon.baseExp}</span></p>
+          </div>
+          <div>
+            <p>Altura: <span>${pokemon.height} decimetres</span></p>
+          </div>
+          <div>
+            <p>Peso: <span>${pokemon.weight} hectograms</span></p>
+          </div>
+          <div>
+            <p>Habilidades: <span>${pokemon.abilities}</span></p>
+          </div>
         </section>
       </div>
     </div>
@@ -114,6 +126,69 @@ function closeModal() {
 	pokedex.style.display = 'flex';
 	modal.style.display = 'none';
 	modal.innerHTML = '';
+}
+
+function changeDetailCall(detail, pokemonId) {
+	const details = document.querySelector('.details-content');
+	pokeApi.getPokemonDetailById(pokemonId).then((pokemon) => {
+		const newHtml = changeDetail(detail, pokemon);
+		details.innerHTML = newHtml;
+	});
+}
+
+function changeDetail(detailContent, pokemon) {
+	if (detailContent === 'about') {
+		return `
+    <section class="about">
+      <div>
+        <p>Experiência Base: <span>${pokemon.baseExp}</span></p>
+      </div>
+      <div>
+        <p>Altura: <span>${pokemon.height} decimetres</span></p>
+      </div>
+      <div>
+        <p>Peso: <span>${pokemon.weight} hectograms</span></p>
+      </div>
+      <div>
+        <p>Habilidades: <span>${pokemon.abilities}</span></p>
+      </div>
+    </section>`;
+	}
+
+	if (detailContent === 'baseStatus') {
+		return `
+    <section class="base-stats">
+      <div>Vida</div>
+      <div>Ataque</div>
+      <div>Defesa</div>
+      <div>Sp. Atk.</div>
+      <div>Sp. Def.</div>
+      <div>Speed</div>
+    </section>
+    `;
+	}
+
+	if (detailContent === 'evolutions') {
+		return `
+    <section class="evolutions">
+      <div>Atual</div>
+      <div>Pré-evolução</div>
+      <div>Evolução</div>
+    </section>
+    `;
+	}
+
+	if (detailContent === 'moves') {
+		return `
+    <section class="moves">
+      <ul>
+        <li>golpes 1</li>
+        <li>golpes 2</li>
+        <li>golpes 3</li>
+      </ul>
+    </section>
+    `;
+	}
 }
 
 loadPokemonItens(offset, limit);

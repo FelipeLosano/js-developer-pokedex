@@ -8,13 +8,14 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
 	pokemon.weight = pokeDetail.weight;
 	pokemon.baseExp = pokeDetail.base_experience;
 
-
 	const types = pokeDetail.types.map((typeSlot) => typeSlot.type.name);
 	const [type] = types;
 
-	const abilities = pokeDetail.abilities.map(
-		(abilitySlot) => abilitySlot.ability.name
-	);
+	const abilities = pokeDetail.abilities.map((abilitySlot) => {
+		const str = ` ${abilitySlot.ability.name}`;
+		const str2 = ' ' + str.charAt(1).toUpperCase() + str.slice(2);
+		return str2;
+	});
 	const [ability] = abilities;
 
 	pokemon.types = types;
