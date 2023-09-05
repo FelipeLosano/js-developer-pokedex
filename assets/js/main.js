@@ -63,26 +63,22 @@ function convertPokemonToModal(pokemon) {
         <li onclick="changeDetailCall('baseStatus', ${
 					pokemon.number
 				})">Status Base</li>
-        <li onclick="changeDetailCall('evolutions', ${
-					pokemon.number
-				})">Cadeia de evoluções</li>
-        <li onclick="changeDetailCall('moves', ${pokemon.number})">Golpes</li>
     </ul>
       </div>
 
       <div class="details-content">
         <section class="about">
           <div>
-            <p>Experiência Base: <span>${pokemon.baseExp}</span></p>
+            <p>Experiência Base: <span>${pokemon.baseExp}</span>.</p>
           </div>
           <div>
-            <p>Altura: <span>${pokemon.height} decimetres</span></p>
+            <p>Altura: <span>${pokemon.height} decimetros</span>.</p>
           </div>
           <div>
-            <p>Peso: <span>${pokemon.weight} hectograms</span></p>
+            <p>Peso: <span>${pokemon.weight} hectogramas</span>.</p>
           </div>
           <div>
-            <p>Habilidades: <span>${pokemon.abilities}</span></p>
+            <p>Habilidades: <span>${pokemon.abilities}</span>.</p>
           </div>
         </section>
       </div>
@@ -141,16 +137,16 @@ function changeDetail(detailContent, pokemon) {
 		return `
     <section class="about">
       <div>
-        <p>Experiência Base: <span>${pokemon.baseExp}</span></p>
+        <p>Experiência Base: <span>${pokemon.baseExp}</span>.</p>
       </div>
       <div>
-        <p>Altura: <span>${pokemon.height} decimetres</span></p>
+        <p>Altura: <span>${pokemon.height} decimetros</span>.</p>
       </div>
       <div>
-        <p>Peso: <span>${pokemon.weight} hectograms</span></p>
+        <p>Peso: <span>${pokemon.weight} hectogramas</span>.</p>
       </div>
       <div>
-        <p>Habilidades: <span>${pokemon.abilities}</span></p>
+        <p>Habilidades: <span>${pokemon.abilities}</span>.</p>
       </div>
     </section>`;
 	}
@@ -158,34 +154,30 @@ function changeDetail(detailContent, pokemon) {
 	if (detailContent === 'baseStatus') {
 		return `
     <section class="base-stats">
-      <div>Vida</div>
-      <div>Ataque</div>
-      <div>Defesa</div>
-      <div>Sp. Atk.</div>
-      <div>Sp. Def.</div>
-      <div>Speed</div>
-    </section>
-    `;
-	}
-
-	if (detailContent === 'evolutions') {
-		return `
-    <section class="evolutions">
-      <div>Atual</div>
-      <div>Pré-evolução</div>
-      <div>Evolução</div>
-    </section>
-    `;
-	}
-
-	if (detailContent === 'moves') {
-		return `
-    <section class="moves">
-      <ul>
-        <li>golpes 1</li>
-        <li>golpes 2</li>
-        <li>golpes 3</li>
-      </ul>
+      <div>Vida: ${pokemon.hp}</div>
+      <div class="bar-background">
+        <div class="life-bar" style="width: ${pokemon.hp}px"></div>
+      </div>
+      <div>Ataque: ${pokemon.atk}</div>
+      <div class="bar-background">
+        <div class="atk-bar" style="width: ${pokemon.atk}px"></div>
+      </div>
+      <div>Defesa: ${pokemon.def}</div>
+      <div class="bar-background">
+        <div class="def-bar" style="width: ${pokemon.def}px"></div>
+      </div>
+      <div>Vel. Atk: ${pokemon.spatk}</div>
+      <div class="bar-background">
+        <div class="spatk-bar" style="width: ${pokemon.spatk}px"></div>
+      </div>
+      <div>Vel. Def: ${pokemon.spdef}</div>
+      <div class="bar-background">
+        <div class="spdef-bar" style="width: ${pokemon.spdef}px"></div>
+      </div>
+      <div>Velocidade: ${pokemon.spd}</div>
+      <div class="bar-background">
+        <div class="spd-bar" style="width: ${pokemon.spd}px"></div>
+      </div>
     </section>
     `;
 	}

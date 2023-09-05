@@ -7,6 +7,12 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
 	pokemon.height = pokeDetail.height;
 	pokemon.weight = pokeDetail.weight;
 	pokemon.baseExp = pokeDetail.base_experience;
+	pokemon.hp = pokeDetail.stats[0].base_stat
+	pokemon.atk = pokeDetail.stats[1].base_stat
+	pokemon.def = pokeDetail.stats[2].base_stat
+	pokemon.spatk = pokeDetail.stats[3].base_stat
+	pokemon.spdef = pokeDetail.stats[4].base_stat
+	pokemon.spd = pokeDetail.stats[5].base_stat
 
 	const types = pokeDetail.types.map((typeSlot) => typeSlot.type.name);
 	const [type] = types;
@@ -18,11 +24,21 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
 	});
 	const [ability] = abilities;
 
+	const moves = pokeDetail.moves.map((moveSlot) => {
+		const str = ` ${moveSlot.move.name}`;
+		const str2 = ' ' + str.charAt(1).toUpperCase() + str.slice(2);
+		return str2;
+	});
+	const [move] = moves;
+
 	pokemon.types = types;
 	pokemon.type = type;
 
 	pokemon.abilities = abilities;
 	pokemon.ability = ability;
+
+	pokemon.moves = moves;
+	pokemon.move = move;
 
 	pokemon.photo = pokeDetail.sprites.other.dream_world.front_default;
 
